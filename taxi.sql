@@ -2,63 +2,71 @@ drop database if exists taxi;
 create database taxi;
 use taxi;
 
-create table cabs(
-    id int not null primary key auto_increment,
-    driver_id integer not null,
-    cab_type varchar(100)not null,
-    reg_number integer not null
+create table taxi_tvrtka(
+    taxi_Id int not null primary key auto_increment,
+    naziv varchar(50) not null,
+    adresa varchar(100)not null,
+    telefon varchar(50)
 );
 
-create table driver(
-     id int not null primary key auto_increment,
-     driver_name varchar(100)not null,
-     cab_id integer not null,
-     phone_number integer not null
+create table vozilo(
+     vozilo_id int not null primary key auto_increment,
+     taxi_Id int not null,
+     model varchar(50) not null,
+     regtablica varchar(50) not null
 );
 
-create table customer(
-     id int not null primary key auto_increment,
-     customer_name varchar(100)not null,
-     mobile_number integer not null
+create table vozac(
+     vozac_id int not null primary key auto_increment,
+     ime varchar(50)not null,
+     prezime varchar(50) not null,
+     telefon varchar(50)not null
 );
 
-create table payment(
-     id int not null primary key auto_increment,
-     destination_id int not null,
-     method varchar(50)not null,
-     amount decimal(18,2)
+create table voznja(
+     voznja_id int not null primary key auto_increment,
+     vozac_id int not null,
+     vozilo_id int not null,
+     datum datetime
 );
 
-create table trips(
-     id int not null primary key auto_increment,
-     customer_id varchar(50) not null,
-     driver_name varchar(50) not null,
-     payment_id decimal(18,2) not null,
-     destination varchar(100) not null
+create table putnik(
+     putnik_id int not null primary key auto_increment,
+     ime varchar(50) not null,
+     prezime varchar(50) not null,
+     telefon varchar(12) not null
 );
 
-alter table driver add foreign key(id)references cabs(id);
-alter table trips add foreign key (id)references driver(id);
-alter table trips add foreign key (id)references payment(id);
-alter table trips add foreign key (id)references driver(id);
-alter table trips add foreign key(id) references customer(id); 
+create table voznja_putnik(
+     voznja_id int not null,
+     putnik_id int not null
+);
 
-insert into cabs(id,driver_id,cab_type,reg_number) values(null,'15','Toyota','OS245BV');
-insert into cabs(id,driver_id,cab_type,reg_number) values(null,'10','Kia','VK000OL');
-insert into cabs(id,driver_id,cab_type,reg_number) values(null,'23','Hyundai','VU684EL');
+alter table vozilo add foreign key(taxi_id)references taxi_tvrtka(taxi_id);
+alter table voznja add foreign key(vozac_id)references vozac(vozac_id);
+alter table voznja add foreign key(vozilo_id)references vozilo(vozilo_id);
+alter table voznja_putnik add foreign key(voznja_id)references voznja(voznja_id);
+alter table voznja_putnik add foreign key(putnik_id)references putnik(putnik_id);
 
-insert into driver(id,driver_name,cab_id,phone_number)values(null,'Ivan','24','0954330');
-insert into driver(id,driver_name,cab_id,phone_number)values(null,'Petar','10','0984521');
-insert into driver(id,driver_name,cab_id,phone_number)values(null,'Marko','5','09233054');
+insert into taxi_tvrtka(taxi_id,naziv,adresa,telefon)
+values(null,'Osječki','Čepinska ulica 120','502-502');
+insert into taxi_tvrtka(taxi_id,naziv,adresa,telefon)
+values(null,'Cameo','Vukovarska 64','300-300');
 
-insert into customer(id,customer_name,mobile_number)values(null,'Mario','09852143');
-insert into customer(id,customer_name,mobile_number)values(null,'Maja','09189542');
-insert into customer(id,customer_name,mobile_number)values(null,'Antonio','09255017');
+insert into vozilo(vozilo_id,taxi_id,model,regtablica)
+values(null,2,'Toyota','OS245IM'),
+(null,1,'Hyundai','OS1205MV');
 
-insert into payment(id,destination_id,method,amount)values(null,'Osječka ulica 58','card','12.82');
-insert into payment(id,destination_id,method,amount)values(null,'Riječka ulica 21','cash','20.12');
-insert into payment(id,destination_id,method,amount)values(null,'Drinska ulica 10P','card','5.40');
+insert into vozac(vozac_id,ime,prezime,telefon)
+values(null,'Ivan','Marošević','0923301144'),
+(null,'Ivo','Ivić','091523017');
 
-insert into trips (id,customer_id,driver_name,payment,destination)values(null,'Mario','Ivan','12.82',"Osjecka ulica 58");
-insert into trips (id,customer_id,driver_name,payment,destination)values(null,'Maja','Petar','20.12',"Riječka ulica 21");
-insert into trips (id,customer_id,driver_name,payment,destination)values(null,'Antonio','Marko','5.40',"Drinska ulica 10P");
+insert into putnik(putnik_id,ime,prezime,telefon)
+values(null,'Mario','Krznar','095423152'),
+(null,'Hrvoje','Kraljev','0912546214');
+
+insert into voznja(voznja_id,vozac_id,vozilo_id,datum)
+values(null,(1),(1),null),
+(null,(2),(2),null);
+insert into voznja_putnik(voznja_id,putnik_id)
+values(1,1),(2,2),(1,2),(2,1);
