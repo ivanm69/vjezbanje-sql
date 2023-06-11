@@ -116,4 +116,37 @@ values(null,(1),(2)),
 (null,(11),(5)),
 (null,(12),(6));
 
+#koji instruktor vodi koji tecaj i koliko traje tecaj
+SELECT a.naziv, a.trajanje, CONCAT(b.ime, ' ', b.prezime) AS instruktor
+FROM tecaj a
+LEFT JOIN instruktor b ON a.instruktor_id = b.id;
+
+
+#Ovaj upit prikazuje imena plesača, tečaj za koji su prijavljeni i puno ime instruktora koji vodi taj tečaj.
+SELECT a.ime, a.prezime, c.naziv AS tecaj, CONCAT(b.ime, ' ', b.prezime) AS instruktor
+FROM plesac a
+INNER JOIN prijava pr ON a.id = pr.plesac_id
+INNER JOIN tecaj c ON pr.tecaj_id = c.id
+INNER JOIN instruktor b ON c.instruktor_id = b.id;
+
+#koliko plesaca ima na svakom pojedinom tecaju
+SELECT c.naziv, COUNT(a.id) AS broj_plesaca
+FROM tecaj c
+LEFT JOIN prijava pr ON c.id = pr.tecaj_id
+LEFT JOIN plesac a ON pr.plesac_id = a.id
+GROUP BY c.id;
+
+#koji plesaci su se prijavili na tecaj
+SELECT a.ime, a.prezime
+FROM plesac a
+INNER JOIN prijava pr ON a.id = pr.plesac_id
+INNER JOIN tecaj c ON pr.tecaj_id = c.id
+WHERE c.naziv = 'Napredna Bachata senzual';
+
+#Dob svakog prijavljenog plesaca
+SELECT a.ime, a.prezime, c.naziv AS tecaj, TIMESTAMPDIFF(YEAR, a.datum_rodenja, CURDATE()) AS dob_plesaca
+FROM plesac a
+INNER JOIN prijava pr ON a.id = pr.plesac_id
+INNER JOIN tecaj c ON pr.tecaj_id = c.id;
+
 
