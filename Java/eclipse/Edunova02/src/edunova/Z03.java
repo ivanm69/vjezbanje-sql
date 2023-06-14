@@ -10,10 +10,10 @@ public class Z03 {
 
 	String grad=JOptionPane.showInputDialog("Unesi grad");
 	
-	int g= Integer.parseInt(JOptionPane.showInputDialog("Unesi godine"));
+	int g = Integer.parseInt(JOptionPane.showInputDialog("Unesi godine"));
 	
 
-	System.out.println("Ja imam" +g+"g  i dolazim iz mjesta" +grad);
+	System.out.println("Ja imam  "  +  g  + " g  i dolazim iz mjesta  " +  grad  );
 		
 	
 	

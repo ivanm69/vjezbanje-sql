@@ -14,7 +14,9 @@ public class E03Omotaci {
 	
 	System.out.println(i);
 	
-	//char c= Character
+	float f = Float.parseFloat("3.14");
+	
+	char c = Character.MIN_VALUE;
 
 	
 	}
