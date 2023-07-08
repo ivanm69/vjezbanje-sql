@@ -1,0 +1,30 @@
+package edunova;
+
+import javax.swing.JOptionPane;
+
+public class Z03 {
+
+	public static void main(String[] args) {
+		
+//program unosi broj elemenata niza cijelih brojeva
+//unose se brojevi s while petljom u niz
+//ispisuju se uneseni brojevi iz niza s foreach petljom
+		
+	int velicinaNiza=Integer.parseInt(JOptionPane.showInputDialog("unesite velicinu niza"));
+	int[]nizBrojeva=new int[velicinaNiza];
+	int brojac=0;
+	
+	while(brojac<velicinaNiza) {
+		nizBrojeva[brojac++]=Integer.parseInt(JOptionPane.showInputDialog("unesite broj niza"));
+	
+	}
+	
+	
+	for(int en:nizBrojeva) {
+		System.out.println(en);
+	}	
+		
+	
+	}
+}
+
