@@ -2,7 +2,7 @@ package edunova;
 
 import javax.swing.JOptionPane;
 
-public class E04CiklicnaMatrica {
+public class CiklicnaMatricaRijesena {
 	
 	public static void main(String[] args) {
 		
