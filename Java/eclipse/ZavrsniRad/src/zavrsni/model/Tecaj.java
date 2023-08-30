@@ -1,4 +1,6 @@
-package zavrsni;
+package zavrsni.model;
+
+import java.util.List;
 
 public class Tecaj extends Entitet{
 
@@ -7,6 +9,7 @@ public class Tecaj extends Entitet{
 	private Stil stil;
 	private Instruktor instruktor;
 	private Plesac plesac;
+	
 	public String getNaziv() {
 		return naziv;
 	}
@@ -34,15 +37,9 @@ public class Tecaj extends Entitet{
 	public Plesac getPlesac() {
 		return plesac;
 	}
-	public void setPlesac(Plesac plesac) {
-		this.plesac = plesac;
+	public void setPlesac(List<Plesac> plesaci) {
+		this.plesac = (Plesac) plesaci;
 	}
-
-
-
-
-
-
-
-
+	
+	
 }

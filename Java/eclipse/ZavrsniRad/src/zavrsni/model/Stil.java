@@ -1,10 +1,15 @@
-package zavrsni;
+package zavrsni.model;
 
 public class Stil extends Tecaj {
-
+	
 	private String naziv;
 	private String opis;
-	
+	public Stil(int i, String string, String string2) {
+		
+	}
+	public Stil() {
+		
+	}
 	public String getNaziv() {
 		return naziv;
 	}
@@ -17,8 +22,11 @@ public class Stil extends Tecaj {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
+	
+	
 
+	
+	
 
-
-
+	
 }
