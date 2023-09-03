@@ -25,7 +25,11 @@ public Instruktor(int sifra, String ime, String prezime, String datumrodenja, St
 	Tecaj = tecaj;
 	Stil = stil;
 }
-;
+public Instruktor(int sifra, String ime, String prezime, String datumrodenja) {
+	super(sifra, ime, prezime, datumrodenja);
+}
+
+
 }
 
 

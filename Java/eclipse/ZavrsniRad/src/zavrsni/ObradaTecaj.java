@@ -20,8 +20,11 @@ public class ObradaTecaj {
 	private Izbornik izbornik;
 public ObradaTecaj() {
 	super();
-	tecajevi = new ArrayList<>();
+	tecajevi = new ArrayList<>();{
+	
 	}
+}
+
 public void prikaziIzbornik() {
 	System.out.println("\t-- Izbornik Tecaj--");
 	System.out.println("1. Pregled postojećih Tecaja");
@@ -35,7 +38,7 @@ public void prikaziIzbornik() {
 private void ucitajStavkuIzbornika() {
 	switch(Pomocno.unosRasponBroja("Odaberi stavku Instruktor Izbornika", "Odabir mora biti 1-5", 1, 5)) {
 	case 1:
-		//pregledTecaja();
+		pregledTecaja();
 		prikaziIzbornik();
 		break;
 	case 2:
@@ -43,11 +46,11 @@ private void ucitajStavkuIzbornika() {
 		prikaziIzbornik();
 		break;
 	case 3:
-		//promjenapostojecegTecaja();
+		promjenapostojecegTecaja();
 		prikaziIzbornik();
 		break;
 	case 4:
-		//brisanjeTecaja();
+		brisanjeTecaja();
 		prikaziIzbornik();
 		break;
 	case 5:
@@ -55,41 +58,89 @@ private void ucitajStavkuIzbornika() {
 	}
 	}
 
+private void pregledTecaja() {
+	System.out.println("------------------");
+	System.out.println("---- Tecajevi ----");
+	System.out.println("------------------");
+	int b=1;
+	for(Tecaj t : tecajevi) {
+		System.out.println(b++ + ". " + t.getNaziv()+" | "+t.getStil()+" | "+t.getInstruktor()+" | "+t.getPlesac());
+	}
+	System.out.println("------------------");
+	
+	
+}
 private void dodavanjeTecaja() {
 	Tecaj t =new Tecaj();
-	t.setsifra(Pomocno.unosRasponBroja("Unesi sifru stila:", "Pozitivan broj", 1, Integer.MAX_VALUE));
-	t.setNaziv(Pomocno.unosString("Unesi naziv stila", "Naziv obavezan"));
-	t.setInstruktor(ucitajInstruktor());
-	t.setPlesac(plesaci());
-	t.setStil(stilovi());
+	t.setNaziv(Pomocno.unosString("Unesi naziv Tecaja", "Naziv obavezan"));
+	t.setStil(postaviStil());
+	t.setInstruktor(postaviInstruktora());
+	t.setPlesac(postaviPlesace());
+	
 	tecajevi.add(t);
 	
 }
 
-
-private Stil stilovi() {
+private Stil postaviStil() {
 	izbornik.getObradaStil().pregledStilova();
-	int index=Pomocno.unosRasponBroja("Odaberi redni broj Stila", "Nije dobar odabir", 1, izbornik.getObradaStil().getStilovi().size());
-	return izbornik.getObradaStil().getStilovi().get(index-1);
+	int broj=Pomocno.unosRasponBroja("Odaberi broj stila", "Nije dobar odabir", 1,izbornik.getObradaStil().getstilovi().size());
+	return izbornik.getObradaStil().getstilovi().get(broj-1);
 }
-private List<Plesac> plesaci() {
-	List<Plesac>plesaci=new ArrayList<>();
-	while(Pomocno.unosBoolean("Zelite li dodati plesaca(da ili bilo sto za ne"));
-		plesaci.add(postaviPlesac());
-	return plesaci();
-}
+private List<Plesac> postaviPlesace() {
+		List<Plesac>plesaci=new ArrayList<>();
+		while(Pomocno.unosBoolean("Zelite li dodati plesaca? da ili bilo sto za ne")) {
+			plesaci.add(postaviPlesac());
+		}
+	return plesaci;
+	}
+
 private Plesac postaviPlesac() {
-	izbornik.getObradaPlesac().pregledPlesac();
-	int index=Pomocno.unosRasponBroja("Odaberi redni broj plesaca", "Odabir nije dobar", 1,izbornik.getObradaPlesac().getPlesaci().size());
-	return izbornik.getObradaPlesac().getPlesaci().get(index-1);
-}
-private Instruktor ucitajInstruktor() {
-	izbornik.getObradaInstruktor().pregledInstruktora();
-	int broj=Pomocno.unosRasponBroja("Odaberi instruktora za tecaj", "Greksa", 1, izbornik.getObradaInstruktor().getInstruktori().size());
+	izbornik.getobradaPlesac().pregledPlesac();
+	int index=Pomocno.unosRasponBroja("Odaberi redni broj plesaca", "Nije dobar odabir",1 ,izbornik.getobradaPlesac().getPlesaci().size());
 	
-	return izbornik.getObradaInstruktor().getInstruktori().get(broj-1);
+	return izbornik.getobradaPlesac().getPlesaci().get(index-1);
+	
 }
 
+
+
+	
+
+
+private Instruktor postaviInstruktora() {
+	izbornik.getobradaInstruktori().pregledInstruktora();
+	int broj=Pomocno.unosRasponBroja("Odaberi redni broj instruktora", "Odabir nije dobar", 1, izbornik.getobradaInstruktori().getInstruktori().size());
+	return izbornik.getobradaInstruktori().getInstruktori().get(broj-1);
+	
+}
+
+
+private void promjenapostojecegTecaja() {
+	pregledTecaja();
+	int index =Pomocno.unosRasponBroja("Unesi redni broj tecaja", "Nije dobar odabir", 1, tecajevi.size());
+	Tecaj t= tecajevi.get(index-1);
+	t.setsifra(Pomocno.unosRasponBroja("Unesi sifru grupe("+t.getsifra()+")", "Pozitivan broj", 1, Integer.MAX_VALUE));
+	t.setNaziv(Pomocno.unosString("Unesi naziv tecaja("+t.getNaziv()+"):", "Naziv obavezan"));
+	System.out.println("Trenutni tecaj"+t.getStil().getNaziv());
+	
+	System.out.println("Trenutni instruktor"+t.getInstruktor());
+	t.setInstruktor(postaviInstruktora());
+	System.out.println("----------------------------");
+	System.out.println("---- Trenutni polaznici ----");
+	System.out.println("----------------------------");
+	int b=1;
+	for(Plesac p:t.getPlesac()) {
+		System.out.println(b++ + ". "+p);
+	}
+	System.out.println("----------------------");
+	t.setPlesac(postaviPlesace());
+
+}
+private void brisanjeTecaja() {
+	pregledTecaja();
+	int index=Pomocno.unosRasponBroja("Odaberi redni broj tecaja", "Nije dobar odabir", 1, tecajevi.size());
+	tecajevi.remove(index-1);
+}
 
 
 

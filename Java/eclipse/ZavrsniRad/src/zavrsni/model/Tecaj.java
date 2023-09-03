@@ -8,7 +8,7 @@ public class Tecaj extends Entitet{
 	private String trajanje;
 	private Stil stil;
 	private Instruktor instruktor;
-	private Plesac plesac;
+	private List<Plesac> plesac;
 	
 	public String getNaziv() {
 		return naziv;
@@ -34,12 +34,15 @@ public class Tecaj extends Entitet{
 	public void setInstruktor(Instruktor instruktor) {
 		this.instruktor = instruktor;
 	}
-	public Plesac getPlesac() {
+	public List<Plesac> getPlesac() {
 		return plesac;
 	}
-	public void setPlesac(List<Plesac> plesaci) {
-		this.plesac = (Plesac) plesaci;
-	}
+public void setPlesac(List<Plesac> list) {
+    this.plesac = list;
+}
 	
 	
+
+
+
 }

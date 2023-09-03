@@ -12,15 +12,18 @@ public class Izbornik {
 	
 	
 	
-	
-public ObradaPlesac getObradaPlesac() {
-		return obradaPlesac;
-	}
-
-	public ObradaInstruktor getObradaInstruktor() {
-		return obradaInstruktor;
-	}
-
+public ObradaStil getObradaStil() {
+	return obradaStil;
+}
+public ObradaPlesac getobradaPlesac() {
+	return obradaPlesac;
+}
+public ObradaInstruktor getobradaInstruktori() {
+	return obradaInstruktor;
+}
+public  ObradaTecaj getobradatecajevi() {
+	return getobradatecajevi();
+}
 public Izbornik() {
 	obradaStil=new ObradaStil();
 	obradaPlesac=new ObradaPlesac();
@@ -76,19 +79,7 @@ private void ucitajStavkuIzbornika() {
 		System.out.println("Doviđenja");
 		break;
 	}	
-}
-public ObradaStil getObradaStil() {
-	return obradaStil;
-}
-public ObradaPlesac getobradaPlesac() {
-	return obradaPlesac;
-}
-public ObradaInstruktor getobradaInstruktori() {
-	return obradaInstruktor;
-}
-public  ObradaTecaj getobradatecajevi() {
-	return getobradatecajevi();
-}
-}
 
+}
+}
 	

@@ -67,13 +67,13 @@ public void pregledInstruktora() {
 	System.out.println("| --------------- |");	
 	int b=1;
 	for(Instruktor i : instruktori) {
-		System.out.println(b++ + ". " + i.getIme());
+		System.out.println(b++ + ". " + i.getIme()+" | "+i.getPrezime()+" | "+i.getDatumrodenja()+" | "+i.getStil()+" | "+i.getTecaj());
 	}
 	System.out.println("------------------");
 	
 }
 private void dodavanjeInstruktora() {
-	Instruktor i=new Instruktor(0, null, null, null, null, null);
+	Instruktor i=new Instruktor(1,"Ivan","Marosevic","12.04.1999.", "Latino", "Ubrzani tecaj napredne salse");
 	i.setsifra(Pomocno.unosRasponBroja("Unesi sifru instruktora:","Pozitivan broj", 1,Integer.MAX_VALUE));
 	i.setIme(Pomocno.unosString("Unesi ime", "Ime obavezno"));
 	i.setPrezime(Pomocno.unosString("Unesi Prezime", "Prezime Obavezno"));

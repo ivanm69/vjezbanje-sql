@@ -4,7 +4,7 @@ public class Stil extends Tecaj {
 	
 	private String naziv;
 	private String opis;
-	public Stil(int i, String string, String string2) {
+	public Stil(int i, String naziv, String opis) {
 		
 	}
 	public Stil() {
@@ -26,6 +26,10 @@ public class Stil extends Tecaj {
 	
 
 	
+@Override
+public String toString() {
+	return "Naziv: " + naziv + ", Opis: " + opis;
+}
 	
 
 	

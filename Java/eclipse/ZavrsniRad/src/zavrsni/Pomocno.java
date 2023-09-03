@@ -56,7 +56,7 @@ public class Pomocno {
 	public static boolean unosBoolean(String poruka) {
 
 		System.out.print(poruka);
-		return ulaz.nextLine().trim().toLowerCase().equals("da") ? false : true;
+		return ulaz.nextLine().trim().toLowerCase().equals("da") ? true : false;
 
 	}
 	

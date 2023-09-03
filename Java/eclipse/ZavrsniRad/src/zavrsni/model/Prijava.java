@@ -1,11 +1,13 @@
 package zavrsni.model;
 
+import java.util.List;
+
 public class Prijava extends Tecaj {
 
 	
-	private Plesac plesac;
+	private List<Plesac> plesac;
 	private Tecaj tecaj;
-	public Plesac getPlesac() {
+	public List<Plesac> getPlesac() {
 		
 		return plesac;
 }
@@ -15,10 +17,10 @@ public class Prijava extends Tecaj {
 	public void setTecaj(Tecaj tecaj) {
 		this.tecaj = tecaj;
 	}
-	public void setPlesac(Plesac plesac) {
+	public void setPlesac(List<Plesac> plesac) {
 		this.plesac = plesac;
 	}
-	public Prijava(Plesac plesac, Tecaj tecaj) {
+	public Prijava(List<Plesac> plesac, Tecaj tecaj) {
 		super();
 		this.plesac = plesac;
 		this.tecaj = tecaj;

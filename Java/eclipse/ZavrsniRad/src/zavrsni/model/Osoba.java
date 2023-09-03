@@ -3,10 +3,10 @@ package zavrsni.model;
 
 public abstract class Osoba extends Entitet {
 	
-	private String ime;
-	private String prezime;
+	protected String ime;
+	protected String prezime;
 	
-	private String datumrodenja;
+	protected String datumrodenja;
 	
 	public Osoba(int sifra, String ime, String prezime, String datumrodenja) {
 		super();

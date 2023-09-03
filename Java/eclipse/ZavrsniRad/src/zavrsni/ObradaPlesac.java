@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zavrsni.model.Plesac;
-import zavrsni.model.Stil;
 
-public class ObradaPlesac {
+
+public class ObradaPlesac extends ObradaTecaj{
 
 private List<Plesac>plesaci;
 
@@ -22,9 +22,11 @@ public ObradaPlesac() {
 }
 
 private void testniPodaci() {
-	plesaci.add(new Plesac(1,"Marko","Kraljevic","12.04.1999."));
-	plesaci.add(new Plesac(2,"Marija","Peric","10.10.1999."));
-	
+    Plesac plesac1 = new Plesac(1, "Marko", "Kraljevic", "12.04.1999.");
+    Plesac plesac2 = new Plesac(2, "Marija", "Peric", "10.10.1999.");
+    
+    plesaci.add(plesac1);
+    plesaci.add(plesac2);
 }
 
 public void prikaziIzbornik() {
@@ -63,19 +65,19 @@ private void ucitajStavkuIzbornika() {
 
 	
 	public void pregledPlesac() {
-	System.out.println("| ----------------|");
-	System.out.println("|---- Plesaci ----|");
-	System.out.println("| --------------- |");	
+	System.out.println("|------------------------------ |");
+	System.out.println("|---------- Plesaci ----------- |");
+	System.out.println("|-----------------------------  |");	
 	int b=1;
 	for(Plesac p : plesaci) {
-		System.out.println(b++ + ". " +p);
+		System.out.println(b++ + ". " +p.getIme()+" | "+p.getPrezime()+" | "+p.getDatumrodenja()+" | "+p.getRazinaZnanja());
 	}
-	System.out.println("------------------");
+	System.out.println("-------------------------------");
 	
 }
 
-	private void dodavanjePlesac() {
-	Plesac p = new Plesac(0, null, null, null);
+	public void dodavanjePlesac() {
+	Plesac p = new Plesac(1,"Marko","Kraljevic","12.04.1999.");
 	p.setsifra(Pomocno.unosRasponBroja("Unesi sifru Plesaca", "Pozitivan broj", 1, Integer.MAX_VALUE));
 	p.setIme(Pomocno.unosString("Unesi ime plesaca:","Ime obavezno"));
 	p.setPrezime(Pomocno.unosString("Unesite prezime plesaca", "Prezime Obavezno"));

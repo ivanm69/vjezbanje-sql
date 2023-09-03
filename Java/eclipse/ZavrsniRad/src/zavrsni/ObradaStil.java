@@ -2,97 +2,115 @@ package zavrsni;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import zavrsni.model.Stil;
 
-public class ObradaStil {
-
-	private List<Stil>stilovi;
+public class ObradaStil{
 	
+private List<Stil>stilovi;
+public List<Stil>getstilovi(){
+	return stilovi;
+}
 	
-	
-	
-public List<Stil> getStilovi() {
-		return stilovi;
-	}
 public ObradaStil() {
-	stilovi=new ArrayList<>();
-	if(Pomocno.dev) {
+	stilovi = new ArrayList<>();
+	if (Pomocno.dev) {
 		testniPodaci();
+		printTestniPodaci();
 	}
-		
+}
+
+
+
+private void printTestniPodaci() {
+	for (Stil stil : stilovi) {
+		System.out.println(stil.toString());
 	}
-	private void testniPodaci() {
-		stilovi.add(new Stil(1,"Salsa","Salsa je dinamičan i ritmičan ples koji potječe iz Latinske Amerike, posebno iz Kube. Uključuje brze korake, okrete i partnera koji se vode kroz različite figure. Salsa se izvodi uz živahnu glazbu pop"));
-		stilovi.add(new Stil(2,"Bachata","Bachata je senzualni ples porijeklom iz Dominikanske Republike. To je romantičan ples s naglaskom na intimnost i bliskost između partnera. Karakterizira ga koraci u paru, koraci u krugu i provokativne"));
-		stilovi.add(new Stil(3,"Kizomba","Kizomba je afrički ples koji se razvio u Angoli. To je sporiji i senzualniji ples koji naglašava fluidne pokrete i blisku interakciju između partnera. Glazba koja prati kizombu često je romantična i m"));
-		
-	}
+}
+
+private void testniPodaci() {
+    stilovi.add(new Stil(1, "Salsa", "Lorem ipsum"));
+    stilovi.add(new Stil(2, "Bachata", "Lorem ispum"));
+}
+
 public void prikaziIzbornik() {
-	System.out.println("\t-- Izbornik stilova--");
-	System.out.println("1. Pregled postojećih stilova");
-	System.out.println("2. Unos novog stila");
-	System.out.println("3. Promjena postojećeg stila");
-	System.out.println("4. Brisanje postojećeg stila");
+	System.out.println("\t-- Izbornik Stilova--");
+	System.out.println("1. Pregled postojećih Stilova");
+	System.out.println("2. Unos novog Stila");
+	System.out.println("3. Promjena postojećeg Stila");
+	System.out.println("4. Brisanje postojećeg Stila");
 	System.out.println("5. Povratak na prethodni izbornik");
 	ucitajStavkuIzbornika();
 }
+
 private void ucitajStavkuIzbornika() {
-	switch(Pomocno.unosRasponBroja("Odaberi stavku stil izbornika", "Odabir mora biti 1-5", 1, 5)) {
+	switch(Pomocno.unosRasponBroja("Odaberi stavku Stil Izbornika", "Odabir mora biti 1-5", 1, 5)) {
 	case 1:
 		pregledStilova();
 		prikaziIzbornik();
 		break;
-	case 2:
-		dodavanjeStila();
+	case 2: 
+		dodavanjeStilova();
 		prikaziIzbornik();
+		break;
 	case 3:
-		promjenastila();
+		promjenapostojecegStila();
 		prikaziIzbornik();
-	
+		break;
 	case 4:
-		brisanjestila();
+		brisanjeStila();
 		prikaziIzbornik();
+		break;
 	case 5:
 		break;
 	}
+	
 }
 
-	public void pregledStilova() {
+
+
+
+public void pregledStilova() {
 	System.out.println("| ----------------|");
-	System.out.println("|---- Stilovi ----|");
+	System.out.println("|--  Stilovi --|");
 	System.out.println("| --------------- |");	
 	int b=1;
-	for(Stil s : stilovi) {
-		System.out.println(b++ + ". " + s.getNaziv());
+	for(Stil s:stilovi) {
+		System.out.println(b++ + ". " +s.getNaziv()+"  "+s.getOpis() );
 	}
 	System.out.println("------------------");
-
-}
-private void dodavanjeStila() {
-		Stil s=new Stil();
-		s.setsifra(Pomocno.unosRasponBroja("Unesi sifru stila:", "Pozitivan broj", 1, Integer.MAX_VALUE));
-		s.setNaziv(Pomocno.unosString("Unesi naziv stila", "Naziv obavezan"));
-		s.setOpis(Pomocno.unosString("Unesi opis stila", "Unos Obavezan"));
-		stilovi.add(s);	
+	
 }
 
-private void promjenastila() {
+
+public void dodavanjeStilova() {
+	Stil s=new Stil();
+s.setsifra(Pomocno.unosRasponBroja("Unesi sifru stila", "Pozitivan broj", 1, Integer.MAX_VALUE));
+s.setNaziv(Pomocno.unosString("Unesi naziv stila", "Unos obavezan"));
+s.setOpis(Pomocno.unosString("Unesi kratki opis stila", "Unos obavezan"));
+stilovi.add(s);
+
+}
+private void promjenapostojecegStila() {
 	pregledStilova();
-	int index=Pomocno.unosRasponBroja("Odaberi redni broj stila", "Odabir nije dobar", 1, stilovi.size());
+	int index=Pomocno.unosRasponBroja("Odaberi broj stila ","Nije dobar odabir", 1, stilovi.size());
 	Stil s=stilovi.get(index-1);
-	s.setsifra(Pomocno.unosRasponBroja("Unesi sifru stila("+s.getsifra()+"):", "Pozitivan broj", 1, Integer.MAX_VALUE));
-	s.setNaziv(Pomocno.unosString("Unesi naziv stila("+s.getNaziv()+"):", "Naziv obavezan"));
-	s.setOpis(Pomocno.unosString("Unesi opis stila("+s.getOpis()+"):", "Opis obavezan"));
-	
-}
+	s.setsifra(Pomocno.unosRasponBroja("Unesi sifru stila("+s.getsifra()+"):","Pozitivan broj" ,1,Integer.MAX_VALUE));
+	s.setNaziv(Pomocno.unosString("Unesi naziv stila("+s.getNaziv()+")","Naziv obavezan"));
+	s.setOpis(Pomocno.unosString("Unesi kratki opis("+s.getOpis()+")", "Opis obavezan"));
+	}	
 
-private void brisanjestila() {
+private void brisanjeStila() {	
 	pregledStilova();
-	int index=Pomocno.unosRasponBroja("Odaberi redni broj stila:","Nije odabran stil", 1, stilovi.size());
+	int index=Pomocno.unosRasponBroja("Odaberi redni broj stila", "Nije dobar odabir", 1, stilovi.size());
 	stilovi.remove(index-1);
-	
-}
 
 }
 
+
+
+
+
+
+
+
+}
