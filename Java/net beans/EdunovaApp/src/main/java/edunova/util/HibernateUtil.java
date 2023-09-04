@@ -4,17 +4,12 @@
  */
 package edunova.util;
 
-
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Ivan
- */
-/**
- *
- 
+ * @author Katedra
  */
 // https://www.geeksforgeeks.org/singleton-class-java/
 
@@ -37,7 +32,6 @@ public class HibernateUtil {
     
     
 }
-    
     
      
 
