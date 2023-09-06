@@ -2,7 +2,10 @@ package edunova.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Smjer extends Entitet {
@@ -14,12 +17,15 @@ public class Smjer extends Entitet {
 	private int trajanje;
 	@Column(columnDefinition = "boolean")
         private boolean verificiran;
-	
+	@OneToMany(mappedBy = "smjer")
+        private List<Grupa>grupe=new ArrayList<>();
+        
 	public Smjer() {
 		
 	}
 	
     
+ 
     public Smjer(int sifra, String naziv, BigDecimal cijena, BigDecimal upisnina, int trajanje, boolean verificiran) {
 		super(sifra);
 		this.naziv = naziv;
@@ -63,6 +69,14 @@ public class Smjer extends Entitet {
 	public void setVerificiran(boolean verificiran) {
 		this.verificiran = verificiran;
 	}
+
+    public List<Grupa> getGrupe() {
+        return grupe;
+    }
+
+    public void setGrupe(List<Grupa> grupe) {
+        this.grupe = grupe;
+    }
 	
 	
 
