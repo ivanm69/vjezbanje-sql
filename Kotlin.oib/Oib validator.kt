@@ -7,7 +7,7 @@
 
 
 fun main(){
-    fun isValjanOIB(oib: String): Boolean {
+    fun CheckOib(oib: String): Boolean {
         if (oib == null || oib.length != 11) {
             return false
         }
@@ -31,7 +31,7 @@ fun main(){
         return kontrolni == (chars[10] - '0')
     }
     
-    println(isValjanOIB("67805710685")) //true
-    println(isValjanOIB("05943632515")) //true
-    println(isValjanOIB("05943632514")) //false
+    println(CheckOib("67805710685")) //true
+    println(CheckOib("05943632515")) //true
+    println(CheckOib("05943632514")) //false
     }
