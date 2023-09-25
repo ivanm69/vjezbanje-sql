@@ -22,13 +22,14 @@
 <dependency>
     <groupId>org.hibernate.orm</groupId>
     <artifactId>hibernate-core</artifactId>
-    <version>6.2.7.Final</version>
+    <version>6.3.0.Final</version>
     <exclusions>
         <exclusion>
             <groupId>jakarta.activation</groupId>
             <artifactId>jakarta.activation-api</artifactId>
         </exclusion>
     </exclusions>
+    <type>jar</type>
 </dependency>
 <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
 <dependency>

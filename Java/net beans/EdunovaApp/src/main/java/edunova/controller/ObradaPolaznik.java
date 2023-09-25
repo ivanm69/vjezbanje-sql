@@ -16,17 +16,30 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
     @Override
     public List<Polaznik> read() {
-       return sesssion.createQuery("from Polaznik",Polaznik.class).list();
+       return session.createQuery("from Polaznik",Polaznik.class).list();
+    }
+    public Polaznik readBySifra(int sifra){
+        return session.get(Polaznik.class, sifra);
+    }
+
+    @Override
+    protected void kontrolaUnos() throws EdunovaException {
+        super.kontrolaUnos(); 
+        kontrolaBrojUgovora();
     }
     
     
 
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        
+     if(entitet.getGrupe().isEmpty()){
+    throw new EdunovaException("Ne mozes obrisati polaznika jer je na nekoj grupi");
     }
+    }
+    private void kontrolaBrojUgovora ()throws EdunovaException{
+        if(entitet.getBrojUgovora()!=null && !entitet.getBrojUgovora().contains("/")){
+            throw new EdunovaException ("Broj ugovora mora sadrzavati znak /");
     
-    
-    
-    
+    }
+     }
 }
