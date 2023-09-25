@@ -1,3 +1,10 @@
+//Created by Ivan Marosevic
+//
+//
+//
+
+
+
 fun main(){
     fun isValjanOIB(oib: String): Boolean {
         if (oib == null || oib.length != 11) {
