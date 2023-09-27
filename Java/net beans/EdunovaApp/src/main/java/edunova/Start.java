@@ -5,9 +5,13 @@ package edunova;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import edunova.controller.ObradaGrupa;
+import edunova.controller.ObradaOperater;
 import edunova.controller.ObradaSmjer;
 import edunova.model.Grupa;
+import edunova.model.Operater;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
 import java.util.List;
@@ -17,27 +21,55 @@ import java.util.List;
  * @author Ivan
  */
 public class Start {
-    
+    // HibernateUtil.getSession();
     public static void main(String[] args) {
-
-        // HibernateUtil.getSession();
+    
+          ObradaOperater oo = new ObradaOperater();
+          Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
+          System.out.println(o==null ? "Neispravno" : o.getIme());
+               
+        
+        // System.out.println(hash);
+        }
         // new PocetniInsert();
         //System.out.println(new Gson().toJson(new ObradaSmjer().read()));
-       ObradaGrupa o = new ObradaGrupa();
+       //ObradaGrupa o = new ObradaGrupa();
         
-        Grupa g = new Grupa();
+       // Grupa g = new Grupa();
         
-        g.setNaziv("Nova test");
-        o.setEntitet(g);
-        try {
-            o.create();
-        } catch (Exception e) {
-        }
-        
+       // g.setNaziv("Nova test");
+       // o.setEntitet(g);
+       // try {
+       //     o.create();
+       // } catch (Exception e) {
+       // }
+       
         
         
       // new PocetniInsert();
+   private void lozinka(){
+            
         
+    Argon2 argon2 = Argon2Factory.create();
+        
+        String hash =argon2.hash(10, 65536, 1, "oper".toCharArray());
+        ObradaOperater oo=new ObradaOperater();
+        Operater o=new Operater();
+        o.setIme("Pero");
+        o.setPrezime("peric");
+        o.setEmail("oper@edunova.hr");
+        o.setUloga("oper");
+        o.setOib("67805710685");
+        o.setLozinka(hash);
+        
+        oo.setEntitet(o);
+        
+        try {
+            oo.create();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         
     }
     
