@@ -14,6 +14,8 @@ import edunova.model.Grupa;
 import edunova.model.Operater;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
+import edunova.view.Autorizacija;
+import edunova.view.SplasScreen;
 import java.util.List;
 
 /**
@@ -24,10 +26,15 @@ public class Start {
     // HibernateUtil.getSession();
     public static void main(String[] args) {
     
-          ObradaOperater oo = new ObradaOperater();
-          Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
-          System.out.println(o==null ? "Neispravno" : o.getIme());
-               
+        //new Autorizacija().setVisible(true);
+        new SplasScreen().setVisible(true);
+         /*
+       ObradaOperater oo = new ObradaOperater();
+       
+       Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
+       
+        System.out.println(o==null ? "Neispravno" : o.getIme());
+        */
         
         // System.out.println(hash);
         }
