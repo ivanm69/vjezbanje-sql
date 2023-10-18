@@ -87,7 +87,7 @@ for (int i = 0; i < BROJ_INSTRUKTORA; i++){
         for(int i = 0; i < BROJ_TECAJEVA; i++){
            t=new Tecaj();
            t.setNaziv(faker.ancient().hero());
-           t.setTrajanje(faker.zelda().character());
+          // t.setTrajanje(faker.BIGDecimal);
            t.setInstruktor(instruktori.get(faker.number().numberBetween(0, -1)));
            p= new ArrayList<>();
            session.persist(t);

@@ -1,52 +1,45 @@
 package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 
 @Entity
 public class Instruktor extends Osoba {
 
-private String Ime;
+    private String iban;
+    
+    @OneToMany(mappedBy = "instruktor")
+    private List<Tecaj> tecajevi = new ArrayList<>();
 
-private String Prezime;
+    public List<Tecaj> gettecajevi() {
+        return tecajevi;
+    }
 
-private Date DatumRodenja;
+    public void setGrupe(List<Tecaj> tecajevi) {
+        this.tecajevi = tecajevi;
+    }
 
-    public Instruktor(String Ime, String Prezime, Date DatumRodenja, int sifra, String ime, String prezime, Date datumrodenja) {
+    
+public Instruktor(String iban, int sifra, String ime, String prezime, Date datumrodenja) {
         super(sifra, ime, prezime, datumrodenja);
-        this.Ime = Ime;
-        this.Prezime = Prezime;
-        this.DatumRodenja = DatumRodenja;
+        this.iban = iban;
     }
 
-    public String getIme() {
-        return Ime;
+  public String getiban() {
+        return iban;
     }
 
-    public void setIme(String Ime) {
-        this.Ime = Ime;
-    }
-
-    public String getPrezime() {
-        return Prezime;
-    }
-
-    public void setPrezime(String Prezime) {
-        this.Prezime = Prezime;
-    }
-
-    public Date getDatumRodenja() {
-        return DatumRodenja;
-    }
-
-    public void setDatumRodenja(Date DatumRodenja) {
-        this.DatumRodenja = DatumRodenja;
+     public void setiban(String iban) {
+        this.iban = iban;
     }
 
    
-}
-
+   }
 
 
 

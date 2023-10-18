@@ -33,7 +33,7 @@ public abstract class Obrada<T extends Entitet>{
     }
     public void create() throws EdunovaException{
         kontrolaNull();
-        entitet.setsifra(null);
+        entitet.setSifra(null);
         kontrolaUnos();
         persist();
     }

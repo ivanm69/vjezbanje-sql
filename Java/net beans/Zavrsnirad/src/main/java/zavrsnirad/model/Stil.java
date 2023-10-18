@@ -1,39 +1,26 @@
 package zavrsnirad.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
-public class Stil extends Tecaj {
+@Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+public class Stil extends Entitet {
 	
+        @Column(nullable =false)
 	private String naziv;
 	private String opis;
-	public Stil(int i, String naziv, String opis) {
-		
-	}
-	public Stil() {
-		
-	}
-   
-	public String getNaziv() {
-		return naziv;
-	}
-   
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
-	public String getOpis() {
-		return opis;
-	}
-	public void setOpis(String opis) {
-		this.opis = opis;
-	}
-	
-	
-
-	
-@Override
+	@OneToMany(mappedBy = "stil")
+        private List<Tecaj>tecajevi=new ArrayList<>();
+        @Override
 public String toString() {
-	return "Naziv: " + naziv + ", Opis: " + opis;
+	return  naziv;
 }
 	
 
