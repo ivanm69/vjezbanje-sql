@@ -23,7 +23,7 @@ public abstract class Entitet {
         return sifra;
     }
 
-    public void setsifra(int sifra) {
+    public void setsifra(Integer sifra) {
         this.sifra = sifra;
     }
 

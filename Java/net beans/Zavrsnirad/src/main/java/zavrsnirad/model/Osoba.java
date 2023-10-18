@@ -1,6 +1,7 @@
 package zavrsnirad.model;
 
 import jakarta.persistence.MappedSuperclass;
+import java.util.Date;
 
 @MappedSuperclass
 public abstract class Osoba extends Entitet {
@@ -8,13 +9,13 @@ public abstract class Osoba extends Entitet {
 	protected String ime;
 	protected String prezime;
 	
-	protected String datumrodenja;
+	protected Date datumrodenja;
 	
-	public Osoba(int sifra, String ime, String prezime, String datumrodenja) {
+	public Osoba(int sifra, String ime, String prezime, Date datumrodenja) {
 		super();
 	}
 
-public Osoba(String ime, String prezime, String datumrodenja) {
+public Osoba(String ime, String prezime, Date datumrodenja) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -37,12 +38,12 @@ public void setIme(String ime) {
 		this.prezime = prezime;
 	}
 
-	public String getDatumrodenja() {
+	public Date getDatumrodenja() {
 		return datumrodenja;
 	}
 
 
-	public void setDatumrodenja(String datumrodenja) {
+	public void setDatumrodenja(Date datumrodenja) {
 		this.datumrodenja = datumrodenja;
 	}
 

@@ -1,12 +1,13 @@
 package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
+import java.util.Date;
 
 @Entity
 public class Plesac extends Osoba {
 
     private String razinaZnanja;
-    private String datumOd;
+    private Date datumOd;
 
     
 
@@ -20,21 +21,21 @@ public class Plesac extends Osoba {
         this.razinaZnanja = razinaZnanja;
     }
 
-    public String getDatumOd() {
+    public Date getDatumOd() {
         return datumOd;
     }
 
-    public void setDatumOd(String datumOd) {
+    public void setDatumOd(Date datumOd) {
         this.datumOd = datumOd;
     }
 
-    public Plesac(int sifra, String ime, String prezime, String datumrodenja, String razinaZnanja, String datumOd) {
+    public Plesac(int sifra, String ime, String prezime, Date datumrodenja, String razinaZnanja, Date datumOd) {
         super(sifra, ime, prezime, datumrodenja);
         this.razinaZnanja = razinaZnanja;
         this.datumOd = datumOd;
     }
 
-    public Plesac(int sifra, String ime, String prezime, String datumrodenja) {
+    public Plesac(int sifra, String ime, String prezime, Date datumrodenja) {
         super(sifra, ime, prezime, datumrodenja);
     }
 
