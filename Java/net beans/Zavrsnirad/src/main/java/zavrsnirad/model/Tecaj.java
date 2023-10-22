@@ -15,7 +15,7 @@ public class Tecaj extends Entitet{
         @ManyToOne
         private Instruktor instruktor;
 	@ManyToMany
-	 private List<Plesac> plesaci; 
+	 //private List<Plesac> plesaci; 
 	
         public String getNaziv() {
 		return naziv;
@@ -41,12 +41,7 @@ public class Tecaj extends Entitet{
 	public void setInstruktor(Instruktor instruktor) {
 		this.instruktor = instruktor;
 	}
-	public List<Plesac>getPlesac(){
-            return plesaci;
-}
-	public void setPlesac(List<Plesac>plesaci){
-            this.plesaci = plesaci;
-        }
+
 	@Override
     public String toString() {
       

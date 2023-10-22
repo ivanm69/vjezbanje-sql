@@ -12,7 +12,6 @@ import zavrsnirad.model.Instruktor;
 import zavrsnirad.model.Plesac;
 import zavrsnirad.model.Stil;
 import zavrsnirad.model.Tecaj;
-
 /**
  *
  * @author Ivan
@@ -20,9 +19,9 @@ import zavrsnirad.model.Tecaj;
 public class PocetniInsert {
 
     private static final int BROJ_STILOVA = 12;
-    private static final int BROJ_PLESACA = 12200;
-    private static final int BROJ_INSTRUKTORA = 5;
-    private static final int BROJ_TECAJEVA = 102;
+    private static final int BROJ_PLESACA = 15;
+    private static final int BROJ_INSTRUKTORA = 7;
+    private static final int BROJ_TECAJA = 220;
 
     private Faker faker;
     private Session session;
@@ -36,12 +35,16 @@ public class PocetniInsert {
         stilovi = new ArrayList<>();
         plesaci = new ArrayList<>();
         instruktori = new ArrayList<>();
+        
         session.getTransaction().begin();
         kreirajStilove();
-        kreirajPlesaca();
-        kreirajInstruktora();
+        kreirajPlesace();
+        kreirajInstruktore();
         kreirajTecaje();
 
+       
+        
+        
         session.getTransaction().commit();
     }
 
@@ -50,48 +53,49 @@ public class PocetniInsert {
         for (int i = 0; i < BROJ_STILOVA; i++) {
             s = new Stil();
             s.setNaziv(faker.beer().name());
-            s.setOpis(faker.nation().nationality());
-            session.persist(s);
+            s.setOpis(faker.app().author());
             stilovi.add(s);
         }
     }
 
-    private void kreirajPlesaca() {
-       /* Plesac p;
+    private void kreirajPlesace() {
+        Plesac p;
         for (int i = 0; i < BROJ_PLESACA; i++) {
             p = new Plesac();
-            p.setIme(faker.animal().name());
-            p.setPrezime(faker.artist().name());
+            p.setIme(faker.name().firstName());
+            p.setPrezime(faker.name().lastName());
+            p.setRazinaZnanja(faker.artist().name());
+            p.setDatumrodenja(faker.date().birthday(2,15));
+            p.setDatumOd(faker.date().birthday(2,15));
+
             session.persist(p);
             plesaci.add(p);
-        }*/
+        }
+
     }
 
-    private void kreirajInstruktora() {
-        Instruktor in;
-for (int i = 0; i < BROJ_INSTRUKTORA; i++){
-      /*  in=new Instruktor();
-        in.setIme(faker.aviation().aircraft());
-        in.setPrezime(faker.ancient().god());
-        in.getStil();
-        in.getTecaj();
-        session.persist(in);
-        instruktori.add(in);*/
-    }
-    }
-    private void kreirajTecaje(){
-       
+        private void kreirajInstruktore() {
+       Instruktor n;
+        for(int i=0;i<BROJ_INSTRUKTORA;i++){
+        n = new Instruktor();
+        n.setIme(faker.name().firstName());
+        n.setPrezime(faker.name().lastName());
+        n.setiban(faker.business().creditCardNumber());
+        n.setDatumrodenja((faker.date().birthday(1, 10)));
+        session.persist(n);
+        instruktori.add(n);
+}}
+    private void kreirajTecaje() {
         Tecaj t;
         List<Plesac>p;
-        
-        for(int i = 0; i < BROJ_TECAJEVA; i++){
-           t=new Tecaj();
-           t.setNaziv(faker.ancient().hero());
-          // t.setTrajanje(faker.BIGDecimal);
-           t.setInstruktor(instruktori.get(faker.number().numberBetween(0, -1)));
-           p= new ArrayList<>();
-           session.persist(t);
-       }
+        for (int i = 0; i < BROJ_TECAJA; i++) {
+        t =new Tecaj();
+        t.setNaziv(faker.chuckNorris().fact());
+        t.setTrajanje(faker.number().numberBetween(5, 30));
+        t.setInstruktor(instruktori.get(faker.number().numberBetween(0, BROJ_INSTRUKTORA)));
+        //p =new ArrayList<>();
+        t.setStil(stilovi.get(faker.number().numberBetween(0, BROJ_STILOVA-1)));
+        }
     }
-}
 
+}

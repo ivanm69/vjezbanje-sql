@@ -2,27 +2,18 @@ package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Plesac extends Osoba {
-
+    
     private String razinaZnanja;
     private Date datumOd;
-    @ManyToMany(mappedBy = "plesac")
-    private List<Tecaj> tecajevi = new ArrayList<>();
-
-    public List<Tecaj>getTecajevi(){
-        return tecajevi;
-    }
-    public void setTecajevi(List<Tecaj>tecajevi){
-        this.tecajevi= tecajevi;
-    }
-
-  
-
+   
+ 
     public String getRazinaZnanja() {
         return razinaZnanja;
     }
@@ -39,7 +30,7 @@ public class Plesac extends Osoba {
         this.datumOd = datumOd;
     }
 
-    public Plesac(int sifra, String ime, String prezime, Date datumrodenja, String razinaZnanja, Date datumOd) {
+    public Plesac(String ime, String prezime, Integer sifra, String razinaZnanja, Date datumrodenja) {
         super(sifra, ime, prezime, datumrodenja);
         this.razinaZnanja = razinaZnanja;
         this.datumOd = datumOd;
@@ -49,6 +40,10 @@ public class Plesac extends Osoba {
         super(sifra, ime, prezime, datumrodenja);
     }
 
+    public Plesac() {
+    }
+
+    
 @Override
     public String toString(){
          StringBuilder sb = new StringBuilder();

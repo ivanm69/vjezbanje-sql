@@ -12,20 +12,15 @@ import java.util.List;
 public class Instruktor extends Osoba {
 
     private String iban;
-    
-    @OneToMany(mappedBy = "instruktor")
-    private List<Tecaj> tecajevi = new ArrayList<>();
 
-    public List<Tecaj> gettecajevi() {
-        return tecajevi;
+    public Instruktor() {
     }
-
-    public void setGrupe(List<Tecaj> tecajevi) {
-        this.tecajevi = tecajevi;
-    }
-
     
-public Instruktor(String iban, int sifra, String ime, String prezime, Date datumrodenja) {
+   
+   
+
+  
+public Instruktor(int sifra,String iban,  String ime, String prezime, Date datumrodenja) {
         super(sifra, ime, prezime, datumrodenja);
         this.iban = iban;
     }

@@ -24,5 +24,6 @@
     <mapping class="zavrsnirad.model.Prijava"/>
     <mapping class="zavrsnirad.model.Tecaj"/>
     <mapping class="zavrsnirad.model.Osoba"/>
+    <mapping class="zavrsnirad.model.RazinaPlesnogZnanja"/>
   </session-factory>
 </hibernate-configuration>

@@ -16,9 +16,8 @@ public class Stil extends Entitet {
         @Column(nullable =false)
 	private String naziv;
 	private String opis;
-	@OneToMany(mappedBy = "stil")
-        private List<Tecaj>tecajevi=new ArrayList<>();
-        @Override
+	
+      
 public String toString() {
 	return  naziv;
 }

@@ -53,5 +53,8 @@ public void setIme(String ime) {
 		return ime + " " + prezime;
 	}
 
+    public Osoba() {
+    }
+
 }
 
