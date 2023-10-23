@@ -15,7 +15,18 @@ public class Tecaj extends Entitet{
         @ManyToOne
         private Instruktor instruktor;
 	@ManyToMany
-	 //private List<Plesac> plesaci; 
+	 private List<Plesac> plesaci; 
+        
+     
+
+   
+    public List<Plesac> getPlesaci() {
+        return plesaci;
+    }
+
+    public void setPlesaci(List<Plesac> plesaci) {
+        this.plesaci = plesaci;
+    }
 	
         public String getNaziv() {
 		return naziv;

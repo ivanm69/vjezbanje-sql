@@ -11,19 +11,29 @@ import java.util.List;
 @Entity
 public class Instruktor extends Osoba {
 
+   
     private String iban;
-
+    @OneToMany
+    public List<Tecaj>tecajevi=new ArrayList<>();
+    public List<Tecaj> getTecajevi(){
+        return tecajevi;
+    }
+    public void setTecajevi(List<Tecaj>tecajevi){
+        this.tecajevi=tecajevi;
+    }
+    
     public Instruktor() {
+    }
+
+    public Instruktor(String iban, String ime, String prezime, String email, Date datumrodenja, Integer sifra) {
+        super(ime, prezime, email, datumrodenja, sifra);
+        this.iban = iban;
     }
     
    
    
 
   
-public Instruktor(int sifra,String iban,  String ime, String prezime, Date datumrodenja) {
-        super(sifra, ime, prezime, datumrodenja);
-        this.iban = iban;
-    }
 
   public String getiban() {
         return iban;

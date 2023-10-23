@@ -10,6 +10,8 @@ import java.util.List;
 import org.hibernate.Session;
 import zavrsnirad.model.Instruktor;
 import zavrsnirad.model.Plesac;
+//import zavrsnirad.model.Prijava;
+import zavrsnirad.model.RazinaPlesnogZnanja;
 import zavrsnirad.model.Stil;
 import zavrsnirad.model.Tecaj;
 /**
@@ -18,29 +20,35 @@ import zavrsnirad.model.Tecaj;
  */
 public class PocetniInsert {
 
-    private static final int BROJ_STILOVA = 12;
-    private static final int BROJ_PLESACA = 15;
+    private static final int BROJ_STILOVA = 35;
+    private static final int BROJ_PLESACA = 100;
     private static final int BROJ_INSTRUKTORA = 7;
+    private static final int BROJ_RAZINA=10;
     private static final int BROJ_TECAJA = 220;
+    
 
     private Faker faker;
     private Session session;
     private List<Stil> stilovi;
     private List<Plesac> plesaci;
     private List<Instruktor> instruktori;
-
+    private List<RazinaPlesnogZnanja>razine;
+    private List<Tecaj>tecajevi;
     public PocetniInsert() {
         faker = new Faker();
         session = HibernateUtil.getSession();
         stilovi = new ArrayList<>();
         plesaci = new ArrayList<>();
         instruktori = new ArrayList<>();
-        
+        razine=new ArrayList<>();
+        tecajevi=new ArrayList<>();
         session.getTransaction().begin();
         kreirajStilove();
         kreirajPlesace();
         kreirajInstruktore();
-        kreirajTecaje();
+        //kreirajRazine();
+       
+       // kreirajTecaje();
 
        
         
@@ -85,17 +93,47 @@ public class PocetniInsert {
         session.persist(n);
         instruktori.add(n);
 }}
+        
+       
+            
+//     private void kreirajRazine() {
+//      RazinaPlesnogZnanja r;
+//     // r = new RazinaPlesnogZnanja();
+//      for(int i=0;i<BROJ_RAZINA;i++){
+//      r.setstecenaRazina_znanja(faker.beer().name());
+//      r.setDatumOd(faker.date().birthday(5,25));
+//      r.setPlesac(plesaci.get(faker.number().numberBetween(0, BROJ_RAZINA)));
+//      session.persist(r);
+//      razine.add(r); 
+//      }
+//      
+//    }
+     
+        
     private void kreirajTecaje() {
         Tecaj t;
-        List<Plesac>p;
-        for (int i = 0; i < BROJ_TECAJA; i++) {
-        t =new Tecaj();
-        t.setNaziv(faker.chuckNorris().fact());
-        t.setTrajanje(faker.number().numberBetween(5, 30));
-        t.setInstruktor(instruktori.get(faker.number().numberBetween(0, BROJ_INSTRUKTORA)));
-        //p =new ArrayList<>();
-        t.setStil(stilovi.get(faker.number().numberBetween(0, BROJ_STILOVA-1)));
-        }
+         List<Plesac>p;
+         
+       for(int i=0;i<BROJ_TECAJA;i++){
+          t=new Tecaj();
+          t.setNaziv(faker.buffy().characters());
+          //t.setStil(stilovi.get(faker.number().numberBetween(0, BROJ_STILOVA - 1)));
+         // t.setTrajanje(faker.date().birthday(5,25));
+          //t.setInstruktor(instruktori.get(faker.number().numberBetween(0,BROJ_INSTRUKTORA-1 )));
+          p = new ArrayList<>();
+    for (int j = 0; j < faker.number().numberBetween(5, 30); j++) {
+        p.add(plesaci.get(faker.number().numberBetween(0, BROJ_PLESACA - 1)));
+          
     }
+       // t.setPlesaci(p);
+        
+        session.persist(t);
+        
+       }     
+                
+  }
 
+    
+
+  
 }

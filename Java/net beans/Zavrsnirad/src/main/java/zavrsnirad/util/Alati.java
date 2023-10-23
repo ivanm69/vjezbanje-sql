@@ -4,6 +4,8 @@
  */
 package zavrsnirad.util;
 
+import zavrsnirad.model.Operater;
+
 /**
  *
  * @author Ivan
@@ -12,12 +14,12 @@ package zavrsnirad.util;
 
 public class Alati {
     
-//    public static final String NAZIV_APP = "Edunova APP";
-//    public static Operater OPERATER;
-//    
-//    public static String getOperater(){
-//        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
-//    }
+    public static final String NAZIV_APP = "Tecaj plesa APP";
+    public static Operater OPERATER;
+    
+    public static String getOperater(){
+        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
+    }
 //    
 //    public static String getOib(){
 //         try {

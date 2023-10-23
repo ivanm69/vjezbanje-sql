@@ -9,6 +9,15 @@ import java.util.List;
 
 @Entity
 public class Plesac extends Osoba {
+       
+    @ManyToMany
+    public List<Tecaj>tecajevi=new ArrayList<>();
+    public List<Tecaj> getTecajevi(){
+        return tecajevi;
+    }
+    public void setTecajevi(List<Tecaj>tecajevi){
+        this.tecajevi=tecajevi;
+    }
     
     private String razinaZnanja;
     private Date datumOd;
@@ -30,16 +39,13 @@ public class Plesac extends Osoba {
         this.datumOd = datumOd;
     }
 
-    public Plesac(String ime, String prezime, Integer sifra, String razinaZnanja, Date datumrodenja) {
-        super(sifra, ime, prezime, datumrodenja);
+    public Plesac(String razinaZnanja, Date datumOd, String ime, String prezime, String email, Date datumrodenja, Integer sifra) {
+        super(ime, prezime, email, datumrodenja, sifra);
         this.razinaZnanja = razinaZnanja;
         this.datumOd = datumOd;
     }
 
-    public Plesac(int sifra, String ime, String prezime, Date datumrodenja) {
-        super(sifra, ime, prezime, datumrodenja);
-    }
-
+ 
     public Plesac() {
     }
 

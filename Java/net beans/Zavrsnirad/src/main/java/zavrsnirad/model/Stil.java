@@ -12,7 +12,16 @@ import lombok.Setter;
 
 @Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Stil extends Entitet {
-	
+    @OneToMany
+    public List<Tecaj> tecajevi = new ArrayList<>();
+
+    public List<Tecaj> getTecajevi() {
+        return tecajevi;
+    }
+
+    public void setTecajevi(List<Tecaj> tecajevi) {
+        this.tecajevi = tecajevi;
+    }
         @Column(nullable =false)
 	private String naziv;
 	private String opis;
@@ -25,3 +34,7 @@ public String toString() {
 
 	
 }
+	
+
+	
+
