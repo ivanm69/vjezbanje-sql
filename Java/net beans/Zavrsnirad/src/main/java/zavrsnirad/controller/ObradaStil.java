@@ -4,6 +4,7 @@
  */
 package zavrsnirad.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import zavrsnirad.model.Stil;
 import zavrsnirad.model.Tecaj;
@@ -27,6 +28,7 @@ public ObradaStil(Stil s){
       return session.createQuery("from Stil",Stil.class).list();
     }
 
+    
     @Override
     protected void kontrolaUnos() throws EdunovaException {
       kontrolaNaziv();
@@ -37,7 +39,7 @@ public ObradaStil(Stil s){
 
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
-        kontrolaUnos();
+     kontrolaUnos();
     }
 
 
@@ -89,7 +91,7 @@ public ObradaStil(Stil s){
                sb.append(t.getNaziv());
                sb.append("\n");
            }
-           // DZ: Očistiti zadnji zarez
+           
            sb.append(")");
            
            

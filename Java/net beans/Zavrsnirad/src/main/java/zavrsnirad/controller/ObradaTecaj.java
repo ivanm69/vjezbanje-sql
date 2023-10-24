@@ -19,10 +19,11 @@ public class ObradaTecaj extends Obrada<Tecaj> {
     public void create()throws EdunovaException{
         super.create();
         
-        if(entitet.getStil().getNaziv()==null){
+        if(entitet.getStil().getBrojTecaj()==null){
+            entitet.getStil().setBrojTecaj(1);
              throw new EdunovaException("Naziv stila ne smije biti prazan");
         }else{
-            entitet.getStil().setNaziv(entitet.getStil().getNaziv()+1);
+            entitet.getStil().setBrojTecaj(entitet.getStil().getBrojTecaj()+1);
         }
         ObradaStil os= new ObradaStil(entitet.getStil());
         try {
@@ -38,14 +39,14 @@ public class ObradaTecaj extends Obrada<Tecaj> {
     @Override
     protected void kontrolaUnos() throws EdunovaException {
        kontrolaStil();
-       kontrolainstruktor();
+       kontrolaInstruktor();
        
     }
 
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
         kontrolaStil();
-        kontrolainstruktor();
+        kontrolaInstruktor();
         
     }
 
@@ -61,9 +62,9 @@ public class ObradaTecaj extends Obrada<Tecaj> {
         }
     }
 
-    private void kontrolainstruktor() throws EdunovaException {
+    private void kontrolaInstruktor() throws EdunovaException {
         if(getEntitet().getInstruktor()==null || getEntitet().getInstruktor().getSifra().equals(0)){
-   //         get.Entitet().setInstruktor(null);
+            getEntitet().setInstruktor(null);
         }
     }
    

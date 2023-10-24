@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package zavrsnirad.controller;
 
 import java.text.Collator;
 import java.util.List;
 import java.util.Locale;
-import static org.hibernate.Hibernate.list;
 import zavrsnirad.model.Plesac;
 import zavrsnirad.util.EdunovaException;
 
@@ -33,7 +28,7 @@ public class ObradaPlesac extends ObradaOsoba<Plesac>{
         uvjet = "%" + uvjet + "%";
         
         List<Plesac> lista = session.createQuery("from Plesac p "
-               + " where concat(p.ime,' ', p.prezime,' ',p.ime,' ',coalesce(p.oib,'')) like :uvjet"
+               + " where concat(p.ime,' ', p.prezime,' ',p.ime,' ',coalesce(p.RazinaZnanja,'')) like :uvjet"
                + " order by p.prezime, p.ime",Plesac.class)
                .setParameter("uvjet", uvjet)
                .setMaxResults(brojRezultata)
@@ -69,7 +64,7 @@ public class ObradaPlesac extends ObradaOsoba<Plesac>{
     
     @Override
     protected void kontrolaBrisanje() throws EdunovaException {
-        if(!entitet.getTecajevi().isEmpty()){
+        if(!entitet.getTecaj().isEmpty()){
             throw new EdunovaException("Ne možeš obrisati polaznika jer je na nekoj grupi");
         }
     }
@@ -84,5 +79,3 @@ public class ObradaPlesac extends ObradaOsoba<Plesac>{
   }
         
     }
-    
-

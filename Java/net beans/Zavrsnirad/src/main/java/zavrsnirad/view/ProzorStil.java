@@ -15,7 +15,7 @@ import zavrsnirad.util.EdunovaException;
  *
  * @author Ivan
  */
-public class ProzorStil extends javax.swing.JFrame {
+public class ProzorStil extends javax.swing.JFrame implements TecajPlesaViewSucelje {
 
     private ObradaStil obrada;
     /**
@@ -24,10 +24,11 @@ public class ProzorStil extends javax.swing.JFrame {
     public ProzorStil() {
         initComponents();
         obrada=new ObradaStil();
-        setTitle(Alati.NAZIV_APP +  "| STIL");
+        setTitle(Alati.NAZIV_APP +  "| Stil");
         ucitaj();
     }
-        private void ucitaj(){
+    
+        public void ucitaj(){
             DefaultListModel<Stil>m =new DefaultListModel<>();
             m.addAll(obrada.read());
             lstPodaci.setModel(m);
@@ -46,7 +47,7 @@ public class ProzorStil extends javax.swing.JFrame {
         lstPodaci = new javax.swing.JList<>();
         lblNaziv = new javax.swing.JLabel();
         txtNaziv = new javax.swing.JTextField();
-        lblOpis = new javax.swing.JLabel();
+        lblStil = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         txtOpis = new javax.swing.JTextField();
         btnBrisanje = new javax.swing.JButton();
@@ -69,7 +70,7 @@ public class ProzorStil extends javax.swing.JFrame {
             }
         });
 
-        lblOpis.setText("Opis:");
+        lblStil.setText("Stil");
 
         btnDodaj.setText("Dodaj");
         btnDodaj.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +106,7 @@ public class ProzorStil extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOpis)
+                            .addComponent(lblStil)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDodaj)
                                 .addGap(18, 18, 18)
@@ -124,7 +125,7 @@ public class ProzorStil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblOpis)
+                .addComponent(lblStil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtOpis, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -167,6 +168,7 @@ public class ProzorStil extends javax.swing.JFrame {
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        obrada.refresh();
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
@@ -188,7 +190,7 @@ public class ProzorStil extends javax.swing.JFrame {
         } catch (EdunovaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
-      
+      obrada.refresh();
     }//GEN-LAST:event_btnBrisanjeActionPerformed
 
     private void btnPromjenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjenaActionPerformed
@@ -206,11 +208,11 @@ public class ProzorStil extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         
         }
-      
+        obrada.refresh();
         
     }//GEN-LAST:event_btnPromjenaActionPerformed
      
-    private void popuniModel(){
+    public void popuniModel(){
         var e= obrada.getEntitet();
        e.setNaziv(txtNaziv.getText());
        e.setOpis(txtOpis.getText());
@@ -218,7 +220,7 @@ public class ProzorStil extends javax.swing.JFrame {
         
     }
     
-   private void popuniView(){
+   public void popuniView(){
     var e = obrada.getEntitet();
     
     txtNaziv.setText(e.getNaziv());
@@ -228,12 +230,7 @@ public class ProzorStil extends javax.swing.JFrame {
     
     
     
-//   try{
-//       txtTrajanje.setText(String.valueOf(e.getTrajanje));
-//   }  catch(Exception ex){
-//       textTrajanje.setText("")
-//   }
-//   
+  
        
    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -242,7 +239,7 @@ public class ProzorStil extends javax.swing.JFrame {
     private javax.swing.JButton btnPromjena;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNaziv;
-    private javax.swing.JLabel lblOpis;
+    private javax.swing.JLabel lblStil;
     private javax.swing.JList<Stil> lstPodaci;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtOpis;

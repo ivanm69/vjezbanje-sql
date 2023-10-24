@@ -6,22 +6,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 @Entity
 public class Instruktor extends Osoba {
 
-   
     private String iban;
-    @OneToMany
-    public List<Tecaj>tecajevi=new ArrayList<>();
-    public List<Tecaj> getTecajevi(){
+    @OneToMany(mappedBy = "instruktor")
+    public List<Tecaj> tecajevi = new ArrayList<>();
+
+    public List<Tecaj> getTecajevi() {
         return tecajevi;
     }
-    public void setTecajevi(List<Tecaj>tecajevi){
-        this.tecajevi=tecajevi;
+
+    public void setTecajevi(List<Tecaj> tecajevi) {
+        this.tecajevi = tecajevi;
     }
-    
+
     public Instruktor() {
     }
 
@@ -29,33 +28,13 @@ public class Instruktor extends Osoba {
         super(ime, prezime, email, datumrodenja, sifra);
         this.iban = iban;
     }
-    
-   
-   
 
-  
-
-  public String getiban() {
+    public String getiban() {
         return iban;
     }
 
-     public void setiban(String iban) {
+    public void setiban(String iban) {
         this.iban = iban;
     }
 
-   
-   }
-
-
-
-
-		
-	
-
-	
-	
-	
-	
-	
-	
-
+}

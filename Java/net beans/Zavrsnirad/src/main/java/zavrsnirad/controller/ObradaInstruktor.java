@@ -16,13 +16,13 @@ public class ObradaInstruktor extends ObradaOsoba<Instruktor> {
 
     @Override
     public List<Instruktor> read() {
-        return session.createQuery("from Instruktor", Instruktor.class).list();
+         List<Instruktor> lista=session.createQuery("from Instruktor", Instruktor.class).list();
         /*
-        for(Predavac p : lista){
+        for(Instruktor p : lista){
             session.refresh(p);
         }
          */
-        // return lista;
+         return lista;
     }
 
     @Override

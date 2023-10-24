@@ -19,8 +19,8 @@ import zavrsnirad.util.Alati;
  */
 public class Autorizacija extends javax.swing.JFrame {
 
-    
     private ObradaOperater obrada;
+
     /**
      * Creates new form Autorizacija
      */
@@ -28,7 +28,7 @@ public class Autorizacija extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaOperater();
         setTitle(Alati.NAZIV_APP);
-        
+
     }
 
     /**
@@ -51,7 +51,7 @@ public class Autorizacija extends javax.swing.JFrame {
 
         jLabel1.setText("Email:");
 
-        txtemail.setText("oper@edunova.hr");
+        txtemail.setText("ivan@edunova.hr");
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
@@ -127,79 +127,78 @@ public class Autorizacija extends javax.swing.JFrame {
     }//GEN-LAST:event_txtemailActionPerformed
 
     private void btnAutorizirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizirajActionPerformed
-       reset();
-        
+        reset();
+
         var email = txtemail.getText().trim();
-        
-        if(email.isEmpty()){
+
+        if (email.isEmpty()) {
             lblEmailPoruka.setText("Email obavezno");
             postaviGresku(txtemail);
             return;
         }
-        
-        if(!EmailValidator.getInstance().isValid(email)){
-             lblEmailPoruka.setText("Upisani tekst nije email");
-             postaviGresku(txtemail);
-             return;
+
+        if (!EmailValidator.getInstance().isValid(email)) {
+            lblEmailPoruka.setText("Upisani tekst nije email");
+            postaviGresku(txtemail);
+            return;
         }
-        
-        if(txtlozinka.getPassword().length==0){
+
+        if (txtlozinka.getPassword().length == 0) {
             postaviGresku(txtlozinka);
             return;
         }
-        
-        // tu sam spreman ići provjeravati
+
         Operater o = obrada.autoriziraj(email, new String(txtlozinka.getPassword()));
-        
-        if(o==null){
-            JOptionPane.showMessageDialog(getRootPane(), 
+
+        if (o == null) {
+            JOptionPane.showMessageDialog(getRootPane(),
                     "Neispravna kombinacija email i lozinka");
             return;
         }
-        Operater logiran =new Operater();
+        Operater logiran = new Operater();
         logiran.setIme(o.getIme());
         logiran.setPrezime(o.getPrezime());
         logiran.setUloga(o.getUloga());
-        
-        Alati.OPERATER=logiran;
-        
-        
-       new Izbornik().setVisible(true);
-       dispose();
+
+        Alati.OPERATER = logiran;
+
+        new Izbornik().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAutorizirajActionPerformed
 
     private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
-       if(txtemail.getText().length()>0){
-           txtemail.setBackground(Color.white);
-       }
-       
-       if(evt.getExtendedKeyCode()== KeyEvent.VK_ENTER){
-           btnAutorizirajActionPerformed(null);
-       }
-       
+        if (txtemail.getText().length() > 0) {
+            txtemail.setBackground(Color.white);
+        }
+
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            btnAutorizirajActionPerformed(null);
+        }
+
     }//GEN-LAST:event_txtemailKeyPressed
 
     private void txtlozinkaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlozinkaKeyPressed
-         if(txtlozinka.getPassword().length>0){
-           txtlozinka.setBackground(Color.white);
-       }
-        
-        if(evt.getExtendedKeyCode()== KeyEvent.VK_ENTER){
-           btnAutorizirajActionPerformed(null);
-       }
-       
+        if (txtlozinka.getPassword().length > 0) {
+            txtlozinka.setBackground(Color.white);
+        }
+
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            btnAutorizirajActionPerformed(null);
+        }
+
     }//GEN-LAST:event_txtlozinkaKeyPressed
 
-    private void postaviGresku(JComponent c){
+    private void postaviGresku(JComponent c) {
         c.setBackground(Color.red);
         c.requestFocus();
     }
-  private void reset(){
-      lblEmailPoruka.setText("");
-      txtemail.setBackground(Color.white);
-      txtlozinka.setBackground(Color.white);
-             
-  }
+
+    private void reset() {
+        lblEmailPoruka.setText("");
+        txtemail.setBackground(Color.white);
+        txtlozinka.setBackground(Color.white);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAutoriziraj;

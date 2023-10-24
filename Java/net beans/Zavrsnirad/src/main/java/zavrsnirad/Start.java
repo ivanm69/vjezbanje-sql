@@ -22,35 +22,33 @@ public class Start {
 
 
     public static void main(String[] args) {
-        
-     // HibernateUtil.getSession();
+        //lozinka();
+      //HibernateUtil.getSession();
       //new PocetniInsert();
          
       new SplashScreen().setVisible(true);
      
-// lozinka();
+    //private void lozinka();
       
-        //ObradaOperater oo=new ObradaOperater();
+    //Provjera //
+//        ObradaOperater oo=new ObradaOperater();
 //      
 //      Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
 //      
 //     System.out.println(o==null ? "Neispravno" : o.getIme());
-      
-      
-      
-   
     }
-         // factory pattern
+    private static void lozinka(){
+        // factory pattern
         Argon2 argon2 = Argon2Factory.create();
 
         String hash = argon2.hash(10, 65536, 1, "oper".toCharArray());
 
-      private void lozinka(){
+      
         ObradaOperater oo = new ObradaOperater();
         Operater o = new Operater();
-        o.setIme("Pero");
-        o.setPrezime("perić");
-        o.setEmail("oper@edunova.hr");
+        o.setIme("Ivan");
+        o.setPrezime("Marosevic");
+        o.setEmail("ivan@edunova.hr");
         o.setUloga("oper");
         o.setLozinka(hash);
 
@@ -63,6 +61,10 @@ public class Start {
         }
     }
 }
+      
+   
+    
+       
 
 //     ObradaStil os=new ObradaStil();
 //     Stil s=new Stil();

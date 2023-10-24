@@ -23,7 +23,6 @@
         <mapping class="zavrsnirad.model.Plesac"/>
         <mapping class="zavrsnirad.model.Tecaj"/>
         <mapping class="zavrsnirad.model.Osoba"/>
-        <mapping class="zavrsnirad.model.RazinaPlesnogZnanja"/>
         <mapping class="zavrsnirad.model.Operater"/>
     </session-factory>
 </hibernate-configuration>

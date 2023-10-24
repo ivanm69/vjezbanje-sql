@@ -11,7 +11,7 @@ public class Tecaj extends Entitet{
 	
         @ManyToOne
         private Stil stil;
-        private Integer trajanje;
+        
         @ManyToOne
         private Instruktor instruktor;
 	@ManyToMany
@@ -34,12 +34,7 @@ public class Tecaj extends Entitet{
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
-	public Integer getTrajanje() {
-		return trajanje;
-	}
-	public void setTrajanje(Integer trajanje) {
-		this.trajanje = trajanje;
-	}
+	
 	public Stil getStil() {
 		return stil;
 	}
