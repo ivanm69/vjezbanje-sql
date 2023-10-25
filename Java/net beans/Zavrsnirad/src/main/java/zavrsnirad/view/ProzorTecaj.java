@@ -115,21 +115,21 @@ private void ucitajInstruktore(){
             }
         });
 
-        btnPromjena1.setText("Promjeni");
+        btnPromjena1.setText("Promjena");
         btnPromjena1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPromjena1ActionPerformed(evt);
             }
         });
 
-        btnObrisi.setText("Obriši");
+        btnObrisi.setText("Brisanje");
         btnObrisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnObrisiActionPerformed(evt);
             }
         });
 
-        btnUpravljajPolaznicima.setText("Upravljaj polaznicima");
+        btnUpravljajPolaznicima.setText("Upravljaj plesacima");
         btnUpravljajPolaznicima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpravljajPolaznicimaActionPerformed(evt);
@@ -138,7 +138,7 @@ private void ucitajInstruktore(){
 
         jScrollPane2.setViewportView(lstPlesac);
 
-        lblPlesaciNaTecaju.setText("Polaznici na grupi");
+        lblPlesaciNaTecaju.setText("Plesaci na tecaju");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +167,7 @@ private void ucitajInstruktore(){
                             .addComponent(cmbInstruktori, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(btnUpravljajPolaznicima, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103))
                     .addGroup(layout.createSequentialGroup()

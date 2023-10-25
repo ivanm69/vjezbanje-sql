@@ -23,7 +23,7 @@ public class ProzorInstruktor extends javax.swing.JFrame implements TecajPlesaVi
      */
     public ProzorInstruktor() {
         initComponents();
-          setTitle(Alati.NAZIV_APP +  "| Intruktori");
+          setTitle(Alati.NAZIV_APP +  "| Instruktori");
           
           obrada = new ObradaInstruktor();
           
